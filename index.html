@@ -35,7 +35,7 @@
           <span class="dot" aria-hidden="true"></span>
           <span class="mono dim" title="titanium.1 channel — monorepo tip and brew formula can diverge">titanium.1 channel</span>
           <span class="dim">·</span>
-          <span>Monorepo tip: 0.147.0-alpha.11+titanium.1 · Install via brew for the published formula artifact (verify with <span class="mono">codex-titanium --version</span>)</span>
+          <span>Default-branch source: 0.145.0-alpha.25+titanium.1 · Homebrew formula: 0.146.0-alpha.10.1+titanium.1 · Verify installed bytes with <span class="mono">codex-titanium --version</span></span>
         </div>
         <h1>Titanium Host</h1>
         <p class="lede">
@@ -60,14 +60,14 @@
             <p>
               <strong>Titanium Host</strong> (also referred to as Titanium CLI on this surface) is the public install
               and onboarding hub for <code>codex-titanium</code>: an independent source fork of OpenAI Codex CLI.
-              Monorepo tip documents <code>0.147.0-alpha.11+titanium.1</code> (family <code>titanium.1</code>).
-              Homebrew formula and latest public GitHub Release ship the published formula artifact and may lag
-              (e.g. a 0.146.*+titanium.1 pin). Always verify with <code>codex-titanium --version</code>
-              on the box you installed — do not treat monorepo tip as the brew deliverable.
+              Default-branch source: <code>0.145.0-alpha.25+titanium.1</code> · Homebrew formula: <code>0.146.0-alpha.10.1+titanium.1</code>.
+              These public source and formula versions can diverge in either direction. Always verify with
+              <code>codex-titanium --version</code> on the box you installed — do not treat either repository pin
+              as proof of the installed artifact.
             </p>
             <ul class="bullets">
               <li><strong>Binary lives in</strong> <a href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">github.com/VeigaPunk/codex-titanium</a> — this site does not vendor the Rust monorepo.</li>
-              <li><strong>Primary install:</strong> <code>brew install VeigaPunk/tap/codex-titanium</code> (Linux x86_64; formula pin may lag monorepo).</li>
+              <li><strong>Primary install:</strong> <code>brew install VeigaPunk/tap/codex-titanium</code> (Linux x86_64; source and formula versions can differ).</li>
               <li><strong>Secondary:</strong> Cargo build from <code>codex-rs</code> until other platform artifacts ship (use for monorepo HEAD / non-x86_64 Linux).</li>
               <li><strong>Disambiguation:</strong> not Grok Builder (ds4cc marketplace), not grok-build-config-builder / Config Builder, not stock Homebrew cask <code>codex</code> / npm <code>@openai/codex</code>.</li>
             </ul>
@@ -102,7 +102,7 @@
         <p class="section-lede">
           Prefer the verified Homebrew formula. The formula installs both
           <code>codex-titanium</code> and a <code>codex</code> symlink from a SHA-256-pinned release artifact.
-          Formula version can lag monorepo HEAD — confirm with <code>--version</code>.
+          Formula and default-branch source versions can differ — confirm with <code>--version</code>.
         </p>
         <div class="install-block">
           <div class="label">Primary — Linux x86_64</div>

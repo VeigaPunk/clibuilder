@@ -9,7 +9,7 @@ Public **install hub** / CLI host surface for **Codex Titanium** (`codex-titaniu
 | **Binary SSoT** | [VeigaPunk/codex-titanium](https://github.com/VeigaPunk/codex-titanium) — **not** vendored here |
 | **Primary install** | `brew install VeigaPunk/tap/codex-titanium` (Linux x86_64) — published formula artifact |
 | **Secondary** | Cargo build from `codex-rs` in the codex-titanium monorepo (monorepo tip / other platforms) |
-| **Version channel** | **titanium.1** family — monorepo tip and brew formula can diverge; always `codex-titanium --version` |
+| **Version channel** | **titanium.1** family — Default-branch source: 0.145.0-alpha.25+titanium.1 · Homebrew formula: 0.146.0-alpha.10.1+titanium.1 · always verify with `codex-titanium --version` |
 
 **Not** Grok Builder, **not** Config Builder / [grok-build-config-builder](https://github.com/VeigaPunk/grok-build-config-builder), **not** an npm package builder.
 
@@ -22,7 +22,7 @@ brew install VeigaPunk/tap/codex-titanium
 codex-titanium --version
 ```
 
-Formula installs `codex-titanium` and a `codex` symlink from the **published formula artifact** (see [VeigaPunk/tap](https://github.com/VeigaPunk/homebrew-tap)). That pin may lag monorepo tip (e.g. brew on a 0.146.*+titanium.1 release while monorepo documents 0.147.*+titanium.1). Trust `--version` on the installed binary, not a single site hero number.
+Formula installs `codex-titanium` and a `codex` symlink from the **published formula artifact** (see [VeigaPunk/tap](https://github.com/VeigaPunk/homebrew-tap)). The public source and formula versions can diverge in either direction. Trust `--version` on the installed binary; neither repository pin proves the bytes installed on a host.
 
 Other platforms: build the Rust CLI from `codex-rs` with Cargo until native release artifacts exist.
 
@@ -58,7 +58,7 @@ bash scripts/smoke.sh
 
 CI: `.github/workflows/smoke.yml` runs the same script on push/PR.
 
-Fails if required product **family** needles are missing from `index.html` (brew formula string, codex-titanium, titanium / titanium.1 channel, independent fork / not official OpenAI, 64, verify `--version`, related URLs, risk ladder language). Exact monorepo triples (`0.147` / `0.146`) are **not** required so CI does not force a false “brew == monorepo tip” claim.
+Fails if required product **family** needles are missing from `index.html` (brew formula string, codex-titanium, titanium / titanium.1 channel, independent fork / not official OpenAI, 64, verify `--version`, related URLs, risk ladder language). The smoke gate fetches the current public source and formula declarations, requires both labeled values in this README and the site, and rejects stale or swapped exact pins.
 
 ## Related links
 
