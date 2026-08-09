@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Titanium Host — install hub for Codex Titanium (codex-titanium): CLI host surface, multi_agent 64, brew path. Independent fork, not official OpenAI. Not Grok Builder, not Config Builder." />
+  <title>Titanium Host · codex-titanium install hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Titanium Host <span>install hub</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#what">What</a>
+        <a href="#install">Install</a>
+        <a href="#config">Config</a>
+        <a href="#stack">Stack</a>
+        <a href="#no-mcp">Policy</a>
+        <a href="#verify">Verify</a>
+        <a href="#related">Related</a>
+        <a href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="status-pill">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="mono dim" title="titanium.1 channel — monorepo tip and brew formula can diverge">titanium.1 channel</span>
+          <span class="dim">·</span>
+          <span>Monorepo tip: 0.147.0-alpha.11+titanium.1 · Install via brew for the published formula artifact (verify with <span class="mono">codex-titanium --version</span>)</span>
+        </div>
+        <h1>Titanium Host</h1>
+        <p class="lede">
+          Public <strong>install hub</strong> for <strong>Codex Titanium</strong> (<code>codex-titanium</code>) —
+          the CLI host binary for Godspeed multi-agent work and sekhmet L3.
+          <strong>Not</strong> Grok Builder. <strong>Not</strong> Config Builder. Filesystem repo name remains <code>clibuilder</code>.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#install">Install codex-titanium →</a>
+          <a class="btn btn-secondary" href="#stack">64 · 16 · 64 stack</a>
+          <a class="btn btn-text" href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">Binary SSoT →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="what" class="section">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">What / why</p>
+          <h2>Codex Titanium, CLI-first</h2>
+          <div class="prose">
+            <p>
+              <strong>Titanium Host</strong> (also referred to as Titanium CLI on this surface) is the public install
+              and onboarding hub for <code>codex-titanium</code>: an independent source fork of OpenAI Codex CLI.
+              Monorepo tip documents <code>0.147.0-alpha.11+titanium.1</code> (family <code>titanium.1</code>).
+              Homebrew formula and latest public GitHub Release ship the published formula artifact and may lag
+              (e.g. a 0.146.*+titanium.1 pin). Always verify with <code>codex-titanium --version</code>
+              on the box you installed — do not treat monorepo tip as the brew deliverable.
+            </p>
+            <ul class="bullets">
+              <li><strong>Binary lives in</strong> <a href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">github.com/VeigaPunk/codex-titanium</a> — this site does not vendor the Rust monorepo.</li>
+              <li><strong>Primary install:</strong> <code>brew install VeigaPunk/tap/codex-titanium</code> (Linux x86_64; formula pin may lag monorepo).</li>
+              <li><strong>Secondary:</strong> Cargo build from <code>codex-rs</code> until other platform artifacts ship (use for monorepo HEAD / non-x86_64 Linux).</li>
+              <li><strong>Disambiguation:</strong> not Grok Builder (ds4cc marketplace), not grok-build-config-builder / Config Builder, not stock Homebrew cask <code>codex</code> / npm <code>@openai/codex</code>.</li>
+            </ul>
+            <p>
+              Titanium is tuned for multi-agent v2 at 64 threads, DS4CC marketplace plugin defaults, and hard-disabled
+              MCP, host apps, memories, and built-in browser-use lanes. Runtime policy is configurable — see risk ladder.
+            </p>
+          </div>
+        </div>
+        <aside class="panel">
+          <p class="eyebrow">Product lock</p>
+          <ul class="tag-list">
+            <li>Titanium Host</li>
+            <li>Titanium CLI</li>
+            <li>codex-titanium</li>
+            <li>brew primary</li>
+            <li>independent fork</li>
+            <li>not official OpenAI</li>
+          </ul>
+          <blockquote>
+            Independent fork under Apache-2.0 NOTICE. Not an official OpenAI distribution.
+            Upstream npm and Homebrew cask do <strong>not</strong> include Titanium changes.
+          </blockquote>
+        </aside>
+      </div>
+    </section>
+
+    <section id="install" class="section">
+      <div class="wrap">
+        <p class="eyebrow">Install</p>
+        <h2>Get codex-titanium on PATH</h2>
+        <p class="section-lede">
+          Prefer the verified Homebrew formula. The formula installs both
+          <code>codex-titanium</code> and a <code>codex</code> symlink from a SHA-256-pinned release artifact.
+          Formula version can lag monorepo HEAD — confirm with <code>--version</code>.
+        </p>
+        <div class="install-block">
+          <div class="label">Primary — Linux x86_64</div>
+          <pre>brew install VeigaPunk/tap/codex-titanium
+codex-titanium --version</pre>
+        </div>
+        <div class="matrix">
+          <article>
+            <h3>Homebrew (primary)</h3>
+            <p>
+              <code>brew install VeigaPunk/tap/codex-titanium</code> —
+              SHA-256-verified Titanium release artifact from
+              <span class="mono">VeigaPunk/tap</span> (Linux x86_64 only today).
+            </p>
+          </article>
+          <article>
+            <h3>Cargo (secondary)</h3>
+            <p>
+              Clone <span class="mono">codex-titanium</span>, build the Rust CLI from
+              <code>codex-rs</code> with Cargo. Use when brew artifacts for your platform are not published yet,
+              or when you need monorepo HEAD instead of the formula pin.
+            </p>
+          </article>
+        </div>
+        <div class="install-block">
+          <div class="label">Optional — apply Titanium preset (run from codex-titanium monorepo root after clone)</div>
+          <pre>install -Dm600 titanium/config.toml "${CODEX_HOME:-$HOME/.codex}/config.toml"</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="config" class="section">
+      <div class="wrap">
+        <p class="eyebrow">Config · risk ladder</p>
+        <h2>Runtime policy (not a hero feature)</h2>
+        <p class="section-lede">
+          Defaults ship unrestricted for Godspeed and L3 operators who already accept full host control.
+          That is a <strong>conscious risk choice</strong>, not a marketing brag. If you need sandboxed execution
+          or approval prompts, edit config before routine use. Deep field editing lives in the Config Builder sibling.
+        </p>
+        <div class="config-grid">
+          <div class="config-card">
+            <p class="k">Default rung (Godspeed / L3)</p>
+            <p class="v mono" style="font-size:0.95rem;line-height:1.45">
+              approval_policy = "never"<br />
+              sandbox_mode = "danger-full-access"
+            </p>
+            <p class="section-lede" style="margin:0.75rem 0 0;font-size:0.85rem">
+              Unrestricted local agent. Suitable only when the operator trusts the model + workspace.
+            </p>
+          </div>
+          <div class="config-card ok">
+            <p class="k">Tighter rungs (edit config)</p>
+            <p class="v mono" style="font-size:0.95rem;line-height:1.45">
+              approval_policy = "on-request" | "untrusted"<br />
+              sandbox_mode = "workspace-write" | "read-only"
+            </p>
+            <p class="section-lede" style="margin:0.75rem 0 0;font-size:0.85rem">
+              Prefer these for shared machines, untrusted repos, or compliance-bound hosts.
+            </p>
+          </div>
+          <div class="config-card ok">
+            <p class="k">multi_agent_v2 threads</p>
+            <p class="v">64</p>
+            <p class="section-lede" style="margin:0.75rem 0 0;font-size:0.85rem">
+              Concurrency plane inside Titanium — independent of host Grok 16 and sekhmet -j 64.
+            </p>
+          </div>
+        </div>
+        <div class="risk-ladder">
+          <p class="eyebrow">Risk ladder — pick your rung before copying the preset</p>
+          <ul class="ladder-list">
+            <li>
+              <span class="rung mono">Rung 0 · Read-only</span>
+              <code>approval_policy = "untrusted"</code> · <code>sandbox_mode = "read-only"</code>
+              <span class="ladder-note">Audit and evaluate the fork. No writes, no surprises.</span>
+            </li>
+            <li>
+              <span class="rung mono">Rung 1 · Workspace write</span>
+              <code>approval_policy = "on-request"</code> · <code>sandbox_mode = "workspace-write"</code>
+              <span class="ladder-note">Daily driver: edits stay in the repo, approvals on escalation.</span>
+            </li>
+            <li>
+              <span class="rung mono">Rung 2 · Godspeed preset</span>
+              <code>approval_policy = "never"</code> · <code>sandbox_mode = "danger-full-access"</code>
+              <span class="ladder-note">Isolated hosts / VMs only. Full filesystem + network, zero prompts — you own the blast radius.</span>
+            </li>
+          </ul>
+        </div>
+        <p class="section-lede" style="margin-top:1.25rem;margin-bottom:0">
+          Source of truth: <code>titanium/config.toml</code> in
+          <a href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">codex-titanium</a>.
+          Interactive TOML UI:
+          <a href="https://github.com/VeigaPunk/grok-build-config-builder" rel="noopener noreferrer" target="_blank">grok-build-config-builder</a>
+          (Config Builder).
+        </p>
+      </div>
+    </section>
+
+    <section id="stack" class="section">
+      <div class="wrap">
+        <p class="eyebrow">Stack map</p>
+        <h2>Three concurrency planes</h2>
+        <p class="section-lede">
+          Do not conflate host Grok subagents, Titanium multi-agent threads, and sekhmet L3 swarm jobs.
+          Set <code>CODEX_BIN=codex-titanium</code> when L3 workers should use this binary.
+        </p>
+        <div class="compare">
+          <article class="metric">
+            <p class="eyebrow">Titanium · multi_agent_v2</p>
+            <p class="num mono ok">64</p>
+            <p class="metric-title">Agent threads</p>
+            <p>Inside <code>codex-titanium</code> via Titanium preset. Godspeed host for parallel agents.</p>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">Host · Grok Build</p>
+            <p class="num mono">16</p>
+            <p class="metric-title">Sibling subagents</p>
+            <p>Grok host cap (<code>max_concurrent</code> / <code>GROK_SUBAGENTS_MAX_CONCURRENT</code>). Not Codex threads.</p>
+          </article>
+          <article class="metric">
+            <p class="eyebrow">L3 · sekhmet</p>
+            <p class="num mono ok">64</p>
+            <p class="metric-title">xbrd-spark jobs</p>
+            <p><code>sekhmet swarm -j 64</code> · <code>XBRD_SPARK_JOBS=64</code> · set <code>CODEX_BIN=codex-titanium</code> so workers resolve Titanium (else falls through to <code>codex</code> on PATH).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="no-mcp" class="section">
+      <div class="wrap">
+        <p class="eyebrow">Policy</p>
+        <h2>No MCP zoo · no built-in browser lanes</h2>
+        <div class="prose">
+          <p>
+            Titanium <strong>removes</strong> <code>mcp</code> / <code>mcp-server</code> command implementations and
+            hard-disables host-owned apps and every configured MCP server at runtime. Agent memories, external memory
+            import, and Chronicle are off. Built-in browser-use, web-search, in-app-browser, and computer-use lanes are disabled.
+          </p>
+          <p>
+            Authenticated web UI adapters (when you need them) use <strong>agent-browser</strong> on loopback CDP
+            <code>:9222</code> — Puppeteer / Musketeer / Almanacker / kimiraikkoner — not an MCP middleman zoo.
+            Exa research stance and marketplace docs live on ds4cc; this hub stays CLI install + posture.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="verify" class="section">
+      <div class="wrap">
+        <p class="eyebrow">Verify</p>
+        <h2>Post-install gates</h2>
+        <p class="section-lede">Confirm binary identity and that Titanium is first on PATH before sekhmet fan-out.</p>
+        <ul class="verify-list">
+          <li>
+            <span class="cmd">codex-titanium --version</span>
+            <span class="hint">Expect a titanium family string (titanium.1 channel). Monorepo tip and brew formula can differ — trust this output, not a single site pin.</span>
+          </li>
+          <li>
+            <span class="cmd">which codex-titanium; which codex; type -a codex</span>
+            <span class="hint">PATH order matters — Titanium symlink vs stock OpenAI codex.</span>
+          </li>
+          <li>
+            <span class="cmd">export CODEX_BIN=codex-titanium</span>
+            <span class="hint">Point sekhmet / xbrd-spark workers at this host binary.</span>
+          </li>
+          <li>
+            <span class="cmd">sekhmet swarm -j 64 -f tasks.md</span>
+            <span class="hint">L3 plane after Titanium is on PATH (operator stack).</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="related" class="section">
+      <div class="wrap">
+        <p class="eyebrow">Ecosystem</p>
+        <h2>Related links</h2>
+        <p class="section-lede">Peers for binary, brew tap, host hub, marketplace TITANIUM-HOST, L3, and Config Builder.</p>
+        <ul class="repo-grid">
+          <li>
+            <span class="tag">Binary SSoT</span>
+            <a class="repo mono" href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">github.com/VeigaPunk/codex-titanium</a>
+            <p>Rust CLI fork, titanium/config.toml preset, browser toolchain pin.</p>
+          </li>
+          <li>
+            <span class="tag">Install · brew tap</span>
+            <a class="repo mono" href="https://github.com/VeigaPunk/homebrew-tap" rel="noopener noreferrer" target="_blank">VeigaPunk/tap · codex-titanium</a>
+            <p>Homebrew formula — primary Linux x86_64 install path.</p>
+          </li>
+          <li>
+            <span class="tag">Host hub</span>
+            <a class="repo mono" href="https://veigapunk.github.io/xbgst-site" rel="noopener noreferrer" target="_blank">veigapunk.github.io/xbgst-site</a>
+            <p>Grok-native godspeed hub — host 16 · L3 64 story. Source: VeigaPunk/xbgst-site.</p>
+          </li>
+          <li>
+            <span class="tag">Marketplace · TITANIUM-HOST</span>
+            <a class="repo mono" href="https://ds4cc.com" rel="noopener noreferrer" target="_blank">ds4cc.com</a>
+            <p>Marketplace + TITANIUM-HOST resolve docs. Repo: VeigaPunk/ds4cc-marketplace.</p>
+          </li>
+          <li>
+            <span class="tag">L3 · xbrd-spark</span>
+            <a class="repo mono" href="https://github.com/VeigaPunk/xbrd-spark" rel="noopener noreferrer" target="_blank">VeigaPunk/xbrd-spark</a>
+            <p>sekhmet / xbrd-spark substrate — CODEX_BIN → codex-titanium.</p>
+          </li>
+          <li>
+            <span class="tag">Config Builder</span>
+            <a class="repo mono" href="https://github.com/VeigaPunk/grok-build-config-builder" rel="noopener noreferrer" target="_blank">grok-build-config-builder</a>
+            <p>Interactive TOML builders (Grok / Codex Titanium / OpenCode) — sibling product, not this hub.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>
+        <strong>Titanium Host</strong> — static GitHub Pages install hub for
+        <a href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">codex-titanium</a>
+        (Titanium CLI). Repo directory name: <code>clibuilder</code>.
+        Apache-2.0 notice preserved from upstream Codex.
+      </p>
+      <p class="disclaimer">
+        <strong>Disclaimer:</strong> Independent fork — not an official OpenAI product or distribution.
+        Not affiliated with or endorsed by OpenAI. Default Godspeed config is unrestricted
+        (<code>approval_policy</code> / <code>danger-full-access</code>) — operators who need sandboxed or
+        approval-gated runs must edit config; see risk ladder above.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  content-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run content smoke
+        run: bash scripts/smoke.sh
