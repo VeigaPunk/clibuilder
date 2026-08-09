@@ -106,14 +106,65 @@ grep -Eq '^  contents:[[:space:]]*read[[:space:]]*$' "$WORKFLOW" \
 if grep -Eq '^[[:space:]]+[A-Za-z0-9_-]+:[[:space:]]*write([[:space:]]|$)' "$WORKFLOW"; then
   fail "workflow must not grant write permissions"
 fi
-grep -Eq 'uses:[[:space:]]+actions/checkout@[0-9a-f]{40}([[:space:]]+#.*)?$' "$WORKFLOW" \
-  || fail "actions/checkout must be pinned to an immutable 40-hex commit"
+APPROVED_CHECKOUT_SHA="3d3c42e5aac5ba805825da76410c181273ba90b1"
+CHECKOUT_USES="$(grep -Ec 'uses:[[:space:]]+actions/checkout@' "$WORKFLOW")"
+[[ "$CHECKOUT_USES" == "1" ]] || fail "workflow must contain exactly one actions/checkout step"
+grep -qF "uses: actions/checkout@$APPROVED_CHECKOUT_SHA # v7.0.1" "$WORKFLOW" \
+  || fail "actions/checkout must use the approved Node 24 commit"
+grep -Eq '^          persist-credentials:[[:space:]]*false[[:space:]]*
+
+# Optional local HTTP probe. Content/version/workflow gates above remain authoritative.
+PORT=8765
+if command -v curl >/dev/null 2>&1; then
+  code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 1 "http://127.0.0.1:${PORT}/" 2>/dev/null || true)"
+  if [[ "$code" == "200" ]]; then
+    ok "HTTP 200 at http://127.0.0.1:${PORT}/"
+  elif command -v python3 >/dev/null 2>&1 && python3 -c 'import http.server' >/dev/null 2>&1; then
+    python3 -m http.server "$PORT" --bind 127.0.0.1 >/tmp/clibuilder-smoke-http.log 2>&1 &
+    PID=$!
+    sleep 0.5
+    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "http://127.0.0.1:${PORT}/" 2>/dev/null || true)"
+    kill "$PID" 2>/dev/null || true
+    wait "$PID" 2>/dev/null || true
+    [[ "$code" == "200" ]] && ok "HTTP 200 at http://127.0.0.1:${PORT}/" \
+      || echo "WARN: local HTTP probe code=${code:-none} (hard gates still pass)"
+  else
+    echo "WARN: python3 unavailable for local HTTP probe (hard gates still pass)"
+  fi
+fi
+
+echo "SMOKE PASS"
+ "$WORKFLOW" \
+  || fail "checkout credentials must not persist"
 if grep -Eq 'uses:[[:space:]]+actions/checkout@v[0-9]' "$WORKFLOW"; then
   fail "mutable actions/checkout major tag is forbidden"
 fi
-grep -Eq '^    timeout-minutes:[[:space:]]*[1-9][0-9]*[[:space:]]*$' "$WORKFLOW" \
+grep -Eq '^    timeout-minutes:[[:space:]]*[1-9][0-9]*[[:space:]]*
+
+# Optional local HTTP probe. Content/version/workflow gates above remain authoritative.
+PORT=8765
+if command -v curl >/dev/null 2>&1; then
+  code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 1 "http://127.0.0.1:${PORT}/" 2>/dev/null || true)"
+  if [[ "$code" == "200" ]]; then
+    ok "HTTP 200 at http://127.0.0.1:${PORT}/"
+  elif command -v python3 >/dev/null 2>&1 && python3 -c 'import http.server' >/dev/null 2>&1; then
+    python3 -m http.server "$PORT" --bind 127.0.0.1 >/tmp/clibuilder-smoke-http.log 2>&1 &
+    PID=$!
+    sleep 0.5
+    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "http://127.0.0.1:${PORT}/" 2>/dev/null || true)"
+    kill "$PID" 2>/dev/null || true
+    wait "$PID" 2>/dev/null || true
+    [[ "$code" == "200" ]] && ok "HTTP 200 at http://127.0.0.1:${PORT}/" \
+      || echo "WARN: local HTTP probe code=${code:-none} (hard gates still pass)"
+  else
+    echo "WARN: python3 unavailable for local HTTP probe (hard gates still pass)"
+  fi
+fi
+
+echo "SMOKE PASS"
+ "$WORKFLOW" \
   || fail "workflow job needs a positive timeout"
-ok "workflow pin, permissions, and timeout contract"
+ok "approved checkout pin, no persisted credentials, permissions, and timeout contract"
 
 # Optional local HTTP probe. Content/version/workflow gates above remain authoritative.
 PORT=8765
