@@ -3,18 +3,67 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Titanium Host — install hub for Codex Titanium (codex-titanium): CLI host surface, multi_agent 64, brew path. Independent fork, not official OpenAI. Not Grok Builder, not Config Builder." />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="Titanium Host — install hub for Codex Titanium (codex-titanium). CLI host surface, multi_agent 64, brew path. Independent fork, not official OpenAI." />
   <title>Titanium Host · codex-titanium install hub</title>
+  <link rel="canonical" href="https://veigapunk.github.io/clibuilder/" />
+  <meta property="og:title" content="Titanium Host · codex-titanium install hub" />
+  <meta property="og:description" content="Install hub for Codex Titanium (codex-titanium): CLI host surface, multi_agent 64, brew path. Independent fork, not official OpenAI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://veigapunk.github.io/clibuilder/" />
+  <meta property="og:site_name" content="Titanium Host" />
+  <meta property="og:image" content="https://veigapunk.github.io/clibuilder/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Titanium Host — codex-titanium install hub" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Titanium Host · codex-titanium install hub" />
+  <meta name="twitter:description" content="Install hub for Codex Titanium (codex-titanium): CLI host surface, multi_agent 64, brew path." />
+  <meta name="twitter:image" content="https://veigapunk.github.io/clibuilder/assets/og-image.png" />
+  <meta name="twitter:image:alt" content="Titanium Host — codex-titanium install hub" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2393c5fd'/%3E%3Ctext x='50' y='68' font-size='55' text-anchor='middle' fill='%2309090b' font-family='monospace'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Codex Titanium",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "downloadUrl": "https://github.com/VeigaPunk/codex-titanium",
+    "softwareVersion": "titanium.1",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Titanium Host",
+      "url": "https://veigapunk.github.io/clibuilder/"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  </noscript>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <header class="nav" id="top">
     <div class="nav-inner">
       <a class="brand" href="#top">Titanium Host <span>install hub</span></a>
-      <nav class="nav-links" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation" hidden>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <nav id="nav-links" class="nav-links" aria-label="Primary">
         <a href="#what">What</a>
         <a href="#install">Install</a>
         <a href="#config">Config</a>
@@ -27,15 +76,18 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap">
         <div class="status-pill">
           <span class="dot" aria-hidden="true"></span>
-          <span class="mono dim" title="titanium.1 channel — monorepo tip and brew formula can diverge">titanium.1 channel</span>
-          <span class="dim">·</span>
-          <span>Monorepo tip: 0.147.0-alpha.11+titanium.1 · Install via brew for the published formula artifact (verify with <span class="mono">codex-titanium --version</span>)</span>
+          <span class="visually-hidden">Channel active:</span>
+          <span class="mono dim">titanium.1 channel</span>
+          <span class="dim" aria-hidden="true">·</span>
+          <span class="version">Monorepo tip: 0.147.0-alpha.11-titanium.1</span>
+          <span class="dim" aria-hidden="true">·</span>
+          <span class="verify-hint">Install via brew for the published formula artifact (verify with <span class="mono">codex-titanium --version</span>)</span>
         </div>
         <h1>Titanium Host</h1>
         <p class="lede">
@@ -60,7 +112,7 @@
             <p>
               <strong>Titanium Host</strong> (also referred to as Titanium CLI on this surface) is the public install
               and onboarding hub for <code>codex-titanium</code>: an independent source fork of OpenAI Codex CLI.
-              Monorepo tip documents <code>0.147.0-alpha.11+titanium.1</code> (family <code>titanium.1</code>).
+              Monorepo tip documents <code>0.147.0-alpha.11-titanium.1</code> (family <code>titanium.1</code>).
               Homebrew formula and latest public GitHub Release ship the published formula artifact and may lag
               (e.g. a 0.146.*+titanium.1 pin). Always verify with <code>codex-titanium --version</code>
               on the box you installed — do not treat monorepo tip as the brew deliverable.
@@ -77,8 +129,8 @@
             </p>
           </div>
         </div>
-        <aside class="panel">
-          <p class="eyebrow">Product lock</p>
+        <aside class="panel" aria-labelledby="panel-eyebrow">
+          <p class="eyebrow" id="panel-eyebrow">Product lock</p>
           <ul class="tag-list">
             <li>Titanium Host</li>
             <li>Titanium CLI</li>
@@ -106,8 +158,11 @@
         </p>
         <div class="install-block">
           <div class="label">Primary — Linux x86_64</div>
-          <pre>brew install VeigaPunk/tap/codex-titanium
+          <div class="copy-wrap">
+            <button class="copy-btn" type="button" aria-label="Copy install command" data-copy="brew install VeigaPunk/tap/codex-titanium&#10;codex-titanium --version">Copy</button>
+            <pre>brew install VeigaPunk/tap/codex-titanium
 codex-titanium --version</pre>
+          </div>
         </div>
         <div class="matrix">
           <article>
@@ -129,7 +184,10 @@ codex-titanium --version</pre>
         </div>
         <div class="install-block">
           <div class="label">Optional — apply Titanium preset (run from codex-titanium monorepo root after clone)</div>
-          <pre>install -Dm600 titanium/config.toml "${CODEX_HOME:-$HOME/.codex}/config.toml"</pre>
+          <div class="copy-wrap">
+            <button class="copy-btn" type="button" aria-label="Copy preset command" data-copy="install -Dm600 titanium/config.toml &quot;${CODEX_HOME:-$HOME/.codex}/config.toml&quot;">Copy</button>
+            <pre>install -Dm600 titanium/config.toml "${CODEX_HOME:-$HOME/.codex}/config.toml"</pre>
+          </div>
         </div>
       </div>
     </section>
@@ -146,28 +204,28 @@ codex-titanium --version</pre>
         <div class="config-grid">
           <div class="config-card">
             <p class="k">Default rung (Godspeed / L3)</p>
-            <p class="v mono" style="font-size:0.95rem;line-height:1.45">
+            <p class="v mono">
               approval_policy = "never"<br />
               sandbox_mode = "danger-full-access"
             </p>
-            <p class="section-lede" style="margin:0.75rem 0 0;font-size:0.85rem">
+            <p class="section-lede">
               Unrestricted local agent. Suitable only when the operator trusts the model + workspace.
             </p>
           </div>
           <div class="config-card ok">
             <p class="k">Tighter rungs (edit config)</p>
-            <p class="v mono" style="font-size:0.95rem;line-height:1.45">
+            <p class="v mono">
               approval_policy = "on-request" | "untrusted"<br />
               sandbox_mode = "workspace-write" | "read-only"
             </p>
-            <p class="section-lede" style="margin:0.75rem 0 0;font-size:0.85rem">
+            <p class="section-lede">
               Prefer these for shared machines, untrusted repos, or compliance-bound hosts.
             </p>
           </div>
           <div class="config-card ok">
             <p class="k">multi_agent_v2 threads</p>
             <p class="v">64</p>
-            <p class="section-lede" style="margin:0.75rem 0 0;font-size:0.85rem">
+            <p class="section-lede">
               Concurrency plane inside Titanium — independent of host Grok 16 and sekhmet -j 64.
             </p>
           </div>
@@ -192,7 +250,7 @@ codex-titanium --version</pre>
             </li>
           </ul>
         </div>
-        <p class="section-lede" style="margin-top:1.25rem;margin-bottom:0">
+        <p class="section-lede">
           Source of truth: <code>titanium/config.toml</code> in
           <a href="https://github.com/VeigaPunk/codex-titanium" rel="noopener noreferrer" target="_blank">codex-titanium</a>.
           Interactive TOML UI:
@@ -296,7 +354,7 @@ codex-titanium --version</pre>
           </li>
           <li>
             <span class="tag">Host hub</span>
-            <a class="repo mono" href="https://veigapunk.github.io/xbgst-site" rel="noopener noreferrer" target="_blank">veigapunk.github.io/xbgst-site</a>
+            <a class="repo mono" href="https://veigapunk.github.io/xbgst-site/" rel="noopener noreferrer" target="_blank">veigapunk.github.io/xbgst-site</a>
             <p>Grok-native godspeed hub — host 16 · L3 64 story. Source: VeigaPunk/xbgst-site.</p>
           </li>
           <li>
@@ -335,5 +393,28 @@ codex-titanium --version</pre>
       </p>
     </div>
   </footer>
+<script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-links');
+    if (toggle && menu) {
+      toggle.hidden = false;
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    }
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const text = btn.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1500);
+        } catch {
+          btn.textContent = 'Ctrl+C';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

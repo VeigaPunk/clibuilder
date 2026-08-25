@@ -64,7 +64,7 @@ Fails if required product **family** needles are missing from `index.html` (brew
 
 - [codex-titanium](https://github.com/VeigaPunk/codex-titanium) — CLI binary + `titanium/` preset
 - [VeigaPunk/tap](https://github.com/VeigaPunk/homebrew-tap) — Homebrew formula
-- [xbgst-site (Pages)](https://veigapunk.github.io/xbgst-site) — Grok-native godspeed hub
+- [xbgst-site (Pages)](https://veigapunk.github.io/xbgst-site/) — Grok-native godspeed hub
 - [ds4cc.com](https://ds4cc.com) / [ds4cc-marketplace](https://github.com/VeigaPunk/ds4cc-marketplace) — marketplace + TITANIUM-HOST docs
 - [xbrd-spark](https://github.com/VeigaPunk/xbrd-spark) — sekhmet L3 substrate
 - [grok-build-config-builder](https://github.com/VeigaPunk/grok-build-config-builder) — Config Builder (sibling)
