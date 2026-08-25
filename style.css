@@ -5,11 +5,10 @@
   --bg-subtle: #18181c;
   --fg: #f4f4f5;
   --fg-muted: #a1a1aa;
-  --fg-subtle: #71717a;
+  --fg-subtle: #81818a;
   --border: #27272a;
   --border-strong: #3f3f46;
   --accent: #93c5fd;
-  --accent-dim: #3b82f6;
   --success: #4ade80;
   --warn: #fbbf24;
   --link: #93c5fd;
@@ -657,4 +656,12 @@ code.ok { color: var(--success); }
 @media (min-width: 1280px) {
   .repo-grid { grid-template-columns: repeat(3, 1fr); }
   .verify-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Ultrawide canvas: lift the 64rem ceiling so grids use the space */
+@media (min-width: 1600px) {
+  .wrap, .nav-inner { max-width: 76rem; }
+  .section { padding: 3.75rem 0; }
+  .compare { gap: 1.5rem; }
+  .lede, .section-lede { max-width: 48rem; }
 }
